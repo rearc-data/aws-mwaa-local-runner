@@ -18,6 +18,8 @@ services:
         restart: always
         depends_on:
             - postgres
+        env_file:
+            - aws_credentials
         environment:
             - LOAD_EX=n
             - EXECUTOR=Local

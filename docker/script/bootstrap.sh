@@ -18,7 +18,7 @@ pip3 install $PIP_OPTION celery[sqs]
 pip3 install $PIP_OPTION psycopg2
 
 # install minimal Airflow packages
-pip3 install $PIP_OPTION --constraint /constraints.txt apache-airflow[crypto,celery,statsd"${AIRFLOW_DEPS:+,}${AIRFLOW_DEPS}"]=="${AIRFLOW_VERSION}"
+pip3 install $PIP_OPTION --constraint /constraints.txt apache-airflow[crypto,celery,statsd,slack"${AIRFLOW_DEPS:+,}${AIRFLOW_DEPS}"]=="${AIRFLOW_VERSION}"
 
 # install additional python dependencies
 if [ -n "${PYTHON_DEPS}" ]; then pip3 install $PIP_OPTION "${PYTHON_DEPS}"; fi
