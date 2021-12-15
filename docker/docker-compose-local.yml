@@ -11,15 +11,17 @@ services:
                 max-size: 10m
                 max-file: "3"
         volumes:
-            - "${PWD}/db-data:/var/lib/postgresql/data"
+#            - "${PWD}/db-data:/var/lib/postgresql/data"
+            - "/var/lib/postgresql/data"
 
     local-runner:
         image: amazon/mwaa-local:2.0.2
+        build: .
         restart: always
         depends_on:
             - postgres
         env_file:
-            - aws_credentials
+            - aws_config
         environment:
             - LOAD_EX=n
             - EXECUTOR=Local
@@ -28,8 +30,9 @@ services:
                 max-size: 10m
                 max-file: "3"
         volumes:
-            - ${PWD}/dags:/usr/local/airflow/dags
+            - ${DAG_DIR:-./dags}:/usr/local/airflow/dags
             - ${PWD}/plugins:/usr/local/airflow/plugins
+            - ~/.aws:/usr/local/airflow/.aws:ro
         ports:
             - "8080:8080"
         command: local-runner
