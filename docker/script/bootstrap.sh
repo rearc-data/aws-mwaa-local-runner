@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -e
+set -ex
 
 # Upgrade pip version to latest
 python3 -m pip install --upgrade pip
