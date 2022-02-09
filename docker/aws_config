@@ -1,2 +1,1 @@
 AWS_PROFILE=data-sourcing
-AIRFLOW_CONN_AWS_REDSHIFT='aws://?role_arn=arn%3Aaws%3Aiam%3A%3A796406704065%3Arole%2FRedshiftS3FullAccess&region_name=us-east-1'
