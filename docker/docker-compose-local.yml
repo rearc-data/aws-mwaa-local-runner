@@ -1,7 +1,7 @@
 version: '3.7'
 services:
     postgres:
-        image: postgres:10-alpine
+        image: postgres:11-alpine
         environment:
             - POSTGRES_USER=airflow
             - POSTGRES_PASSWORD=airflow
@@ -38,6 +38,8 @@ services:
         ports:
             - "8080:8080"
         command: local-runner
+        tmpfs:
+            - /tmp
         healthcheck:
             test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]"]
             interval: 30s
