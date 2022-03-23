@@ -25,8 +25,7 @@ services:
         environment:
             - LOAD_EX=n
             - EXECUTOR=Local
-            - AIRFLOW_CONN_AWS_DATA_PLANE=aws://?role_arn=arn%3Aaws%3Aiam%3A%3A796406704065%3Arole%2FCrossAccountRole-658443672529&region_name=us-east-1&external_id=Rearc-Data-Platform-658443672529
-            - AIRFLOW_CONN_AWS_DEFAULT=aws://?region_name=us-east-1&role_arn=arn%3Aaws%3Aiam%3A%3A658443672529%3Arole%2Fservice-role%2Fairflow-rearc-data-platform-MwaaExecutionRole-165NIXZ70SXEE
+            - DAG_ECS_TAG_PREFIX=${TAG_PREFIX}
         logging:
             options:
                 max-size: 10m
