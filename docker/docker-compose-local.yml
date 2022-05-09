@@ -20,12 +20,11 @@ services:
         restart: always
         depends_on:
             - postgres
-        env_file:
-            - aws_config
         environment:
             - LOAD_EX=n
             - EXECUTOR=Local
             - DAG_ECS_TAG_PREFIX=${TAG_PREFIX}
+            - AWS_PROFILE=${AWS_PROFILE}
         logging:
             options:
                 max-size: 10m
