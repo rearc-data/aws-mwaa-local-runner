@@ -25,6 +25,7 @@ services:
             - EXECUTOR=Local
             - DAG_ECS_TAG_PREFIX=${TAG_PREFIX}
             - AWS_PROFILE=${AWS_PROFILE}
+            - 'AIRFLOW__SECRETS__BACKEND_KWARGS={"connections_prefix": "/${DEPLOYMENT:-dev}/airflow/connections", "variables_prefix": "/${DEPLOYMENT:-dev}/airflow/variables"}'
         logging:
             options:
                 max-size: 10m
