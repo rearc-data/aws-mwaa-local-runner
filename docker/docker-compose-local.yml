@@ -2,7 +2,6 @@ version: '3.7'
 services:
     postgres:
         image: postgres:11-alpine
-        restart: always
         environment:
             - POSTGRES_USER=airflow
             - POSTGRES_PASSWORD=airflow
@@ -35,11 +34,6 @@ services:
             - ${DAG_DIR:-./dags}:/usr/local/airflow/dags
             - ${PWD}/plugins:/usr/local/airflow/plugins
             - ~/.aws:/usr/local/airflow/.aws:ro
-            - ~/.aws:/root/.aws:ro
-            - //var/run/docker.sock:/var/run/docker.sock
-            - pip_cache2:/usr/local/airflow/.cache/pip
-            - pip_cache:/root/.cache/pip
-        user: root
         ports:
             - "8080:8080"
         command: local-runner
