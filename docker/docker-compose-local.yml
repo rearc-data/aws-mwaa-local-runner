@@ -37,8 +37,8 @@ services:
             - ~/.aws:/usr/local/airflow/.aws:ro
             - ~/.aws:/root/.aws:ro
             - //var/run/docker.sock:/var/run/docker.sock
-            - pip_cache2:/usr/local/airflow/.cache/pip
-            - pip_cache:/root/.cache/pip
+            - /usr/local/airflow/.cache/pip
+            - /root/.cache/pip
         user: root
         ports:
             - "8080:8080"
