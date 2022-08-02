@@ -26,6 +26,7 @@ services:
             - EXECUTOR=Local
             - DAG_ECS_TAG_PREFIX=${TAG_PREFIX}
             - AWS_PROFILE=${AWS_PROFILE}
+            - MWAA_IS_LOCAL=1
             - 'AIRFLOW__SECRETS__BACKEND_KWARGS={"connections_prefix": "/${DEPLOYMENT:-dev}/airflow/connections", "variables_prefix": "/${DEPLOYMENT:-dev}/airflow/variables"}'
         logging:
             options:
