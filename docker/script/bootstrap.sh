@@ -33,7 +33,7 @@ pip3 install $PIP_OPTION apache-airflow-providers-tableau==1.0.0
 pip3 install $PIP_OPTION "apache-airflow-providers-databricks>=2.3"
 pip3 install $PIP_OPTION apache-airflow-providers-ssh==1.3.0
 pip3 install $PIP_OPTION apache-airflow-providers-postgres==1.0.2
-pip3 install $PIP_OPTION apache-airflow-providers-docker==1.2.0
+pip3 install $PIP_OPTION "apache-airflow-providers-docker>=3.0.0"
 pip3 install $PIP_OPTION apache-airflow-providers-oracle==1.1.0
 pip3 install $PIP_OPTION apache-airflow-providers-presto==1.0.2
 pip3 install $PIP_OPTION apache-airflow-providers-sftp==1.2.0
