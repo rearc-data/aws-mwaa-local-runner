@@ -50,7 +50,7 @@ pip3 install $PIP_OPTION watchtower==${WATCHTOWER_VERSION}
 MWAA_BASE_PROVIDERS_FILE=/mwaa-base-providers-requirements.txt
 if [[ -f "$MWAA_BASE_PROVIDERS_FILE" ]]; then
     echo "Installing providers supported for airflow version ${PROVIDER_AMAZON_VERSION}"
-    pip3 install $PIP_OPTION -r $MWAA_BASE_PROVIDERS_FILE
+    pip3 install $PIP_OPTION --constraint /constraints.txt -r $MWAA_BASE_PROVIDERS_FILE
 else
     echo "Providers not supported for airflow version ${PROVIDER_AMAZON_VERSION}"
 fi
