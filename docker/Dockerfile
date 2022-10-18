@@ -3,13 +3,13 @@
 # DESCRIPTION: Amazon MWAA Local Dev Environment
 # BUILD: docker build --rm -t amazon/mwaa-local .
 
-FROM amazonlinux
+FROM public.ecr.aws/amazonlinux/amazonlinux
 LABEL maintainer="amazon"
 
 # Airflow
 ## Version specific ARGs
 ARG AIRFLOW_VERSION=2.2.2
-ARG WATCHTOWER_VERSION=2.0.1
+ARG WATCHTOWER_VERSION=2.2.1
 ARG PROVIDER_AMAZON_VERSION=2.4.0
 
 ## General ARGs

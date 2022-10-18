@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -e
+set -ex
 
 # Upgrade pip version to latest
 pip3 install --upgrade pip
@@ -10,6 +10,7 @@ pip3 install wheel
 
 # On RHL and Centos based linux, openssl needs to be set as Python Curl SSL library
 export PYCURL_SSL_LIBRARY=openssl
+pip3 install --upgrade pip
 pip3 install $PIP_OPTION --compile pycurl
 pip3 install $PIP_OPTION celery[sqs]
 
@@ -17,7 +18,7 @@ pip3 install $PIP_OPTION celery[sqs]
 pip3 install $PIP_OPTION psycopg2
 
 # install minimal Airflow packages
-pip3 install $PIP_OPTION --constraint /constraints.txt apache-airflow[crypto,celery,statsd"${AIRFLOW_DEPS:+,}${AIRFLOW_DEPS}"]=="${AIRFLOW_VERSION}"
+pip3 install $PIP_OPTION --constraint /constraints.txt apache-airflow[crypto,celery,statsd,slack"${AIRFLOW_DEPS:+,}${AIRFLOW_DEPS}"]=="${AIRFLOW_VERSION}"
 
 # install additional python dependencies
 if [ -n "${PYTHON_DEPS}" ]; then pip3 install $PIP_OPTION "${PYTHON_DEPS}"; fi
@@ -25,7 +26,20 @@ if [ -n "${PYTHON_DEPS}" ]; then pip3 install $PIP_OPTION "${PYTHON_DEPS}"; fi
 # install adduser and add the airflow user
 adduser -s /bin/bash -d "${AIRFLOW_USER_HOME}" airflow
 
-# Install default providers
+## install watchtower for Cloudwatch logging
+#pip3 install $PIP_OPTION watchtower==1.0.1
+#
+#pip3 install $PIP_OPTION apache-airflow-providers-tableau==1.0.0
+#pip3 install $PIP_OPTION "apache-airflow-providers-databricks>=2.3"
+#pip3 install $PIP_OPTION apache-airflow-providers-ssh==1.3.0
+#pip3 install $PIP_OPTION apache-airflow-providers-postgres==1.0.2
+#pip3 install $PIP_OPTION "apache-airflow-providers-docker>=3.0.0"
+#pip3 install $PIP_OPTION apache-airflow-providers-oracle==1.1.0
+#pip3 install $PIP_OPTION apache-airflow-providers-presto==1.0.2
+#pip3 install $PIP_OPTION apache-airflow-providers-sftp==1.2.0
+#
+## Install default providers
+#pip3 install --constraint /constraints.txt apache-airflow-providers-amazon
 pip3 install $PIP_OPTION apache-airflow-providers-amazon==${PROVIDER_AMAZON_VERSION}
 
 # Install watchtower for Cloudwatch logging

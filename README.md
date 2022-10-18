@@ -1,3 +1,29 @@
+# For Rearc-Data
+
+This fork is private to Rearc Data, and is specifically intended to mimic our ADX data provider platform.
+
+To get started, clone this repo and make sure you have docker-compose installed.
+
+## AWS Credentials
+
+Set your AWS credentials in ``docker/aws_credentials`` (a template file is provided for the first time). Get these credentials from [the SSO login page](https://rearc.awsapps.com/start), from "Data Sourcing", from the "Command line or programmatic access" link on the right hand side. These keys rotate daily or more, so you'll need to refresh these credentials daily.
+
+## Syncing DAG's
+
+Your ``rearc-data-provider`` code needs to be available within this repo. You can do this one of two ways
+
+### Manual re-sync
+
+You can use the provided ``sync_code.sh`` script to pull the appropriate folders from the relevant locations. Just update ``root`` at the top, and fire off the script anytime you make a change that you want to test in MWAA.
+
+### Hard link the folders
+
+You can also hard-link the needed folders into the MWAA folder. Specifically, link ``rearc-data-provider/dags <-- mwaa/dags``, ``rearc-data-provider/jobs <-- mwaa/jobs``, and ``rearc-data-provider/rearc_data_utils <-- mwaa/dags/rearc_data_utils`` (this is likely to cause issues in your original repo, so I can probably fix this at some point...).
+
+## Launching
+
+You can now follow the README below as normal to launch your local MWAA instance.
+
 # About aws-mwaa-local-runner
 
 This repository provides a command line interface (CLI) utility that replicates an Amazon Managed Workflows for Apache Airflow (MWAA) environment locally.
