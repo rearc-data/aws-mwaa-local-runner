@@ -16,7 +16,8 @@ services:
             - "/var/lib/postgresql/data"
 
     local-runner:
-#        image: 658443672529.dkr.ecr.us-east-1.amazonaws.com/amazon/mwaa-local:2.2.2
+#        image: amazon/mwaa-local:2_2
+        platform: "linux/amd64"
         build: .
         restart: always
         depends_on:
@@ -33,8 +34,9 @@ services:
                 max-size: 10m
                 max-file: "3"
         volumes:
-            - ${DAG_DIR:-./dags}:/usr/local/airflow/dags
-            - ${PWD}/plugins:/usr/local/airflow/plugins
+            - "${DAG_DIR:-./dags}:/usr/local/airflow/dags"
+            - "${PWD}/plugins:/usr/local/airflow/plugins"
+#            - "${PWD}/requirements:/usr/local/airflow/requirements"
             - ~/.aws:/usr/local/airflow/.aws:ro
             - ~/.aws:/root/.aws:ro
             - //var/run/docker.sock:/var/run/docker.sock
@@ -51,3 +53,5 @@ services:
             interval: 30s
             timeout: 30s
             retries: 3
+        env_file:
+            - ./config/.env.localrunner
