@@ -38,7 +38,7 @@ services:
         max-file: "3"
     volumes:
       - "${DAG_DIR:-./dags}:/usr/local/airflow/dags"
-      - "${PWD}/plugins:/usr/local/airflow/plugins"
+      - "${PLUGINS_DIR:-./plugins}:/usr/local/airflow/plugins"
       # - "${PWD}/requirements:/usr/local/airflow/requirements"
       - ~/.aws:/usr/local/airflow/.aws:ro
       - ~/.aws:/root/.aws:ro
