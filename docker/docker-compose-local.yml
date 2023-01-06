@@ -17,7 +17,7 @@ services:
       - "/var/lib/postgresql/data"
 
   local-runner:
-    # image: amazon/mwaa-local:2_2
+    # image: amazon/mwaa-local:2_4
     # platform: "linux/amd64"
     # platform: "linux/arm64"
     build: .

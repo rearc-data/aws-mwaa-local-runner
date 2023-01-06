@@ -4,6 +4,8 @@ dags/**/*.pyc
 /.idea
 /logs
 /db-data
+.DS_Store
+
 /dags
 /jobs
 /docker/aws_credentials
