@@ -45,7 +45,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/local/airflow/.cache/pip
       - /root/.cache/pip
-    user: root
     ports:
       - "8080:8080"
     command: local-runner

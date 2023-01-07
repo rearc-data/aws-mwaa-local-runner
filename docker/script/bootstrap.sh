@@ -44,7 +44,7 @@ yum install -y java-1.8.0-openjdk
 sudo -u airflow pip3 install $PIP_OPTION --no-use-pep517 --constraint /constraints.txt poetry
 sudo -u airflow pip3 install $PIP_OPTION --constraint /constraints.txt cached-property
 sudo -u airflow pip3 install $PIP_OPTION --constraint /constraints.txt wheel
-sudo -u airflow pip3 install $PIP_OPTION --constraint /constraints.txt --use-deprecated legacy-resolver apache-airflow[celery,statsd,slack"${AIRFLOW_DEPS:+,}${AIRFLOW_DEPS}"]=="${AIRFLOW_VERSION}"
+sudo -u airflow pip3 install $PIP_OPTION --constraint /constraints.txt --use-deprecated legacy-resolver apache-airflow[celery,statsd"${AIRFLOW_DEPS:+,}${AIRFLOW_DEPS}"]=="${AIRFLOW_VERSION}"
 
 # install celery[sqs] and its dependencies
 yum install -y libcurl-devel
