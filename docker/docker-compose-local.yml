@@ -48,6 +48,7 @@ services:
     ports:
       - "8080:8080"
     command: local-runner
+    user: root
     tmpfs:
       - /tmp
     healthcheck:
