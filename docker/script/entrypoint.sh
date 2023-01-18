@@ -31,7 +31,7 @@ install_requirements() {
           fi
       fi    
         echo "Installing requirements.txt"
-        pip3 install --user -r "$AIRFLOW_HOME/$REQUIREMENTS_FILE"
+        pip3 install -r "$AIRFLOW_HOME/$REQUIREMENTS_FILE"
     fi
 }
 

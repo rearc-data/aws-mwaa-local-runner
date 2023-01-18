@@ -14,7 +14,7 @@ ARG PROVIDER_AMAZON_VERSION=6.0.0
 
 ## General ARGs
 ARG AIRFLOW_USER_HOME=/usr/local/airflow
-ARG AIRFLOW_DEPS=""
+ARG AIRFLOW_DEPS="sentry,slack"
 ARG PYTHON_DEPS=""
 ARG SYSTEM_DEPS=""
 ARG INDEX_URL=""
@@ -38,12 +38,12 @@ COPY script/entrypoint.sh /entrypoint.sh
 COPY config/airflow.cfg ${AIRFLOW_USER_HOME}/airflow.cfg
 COPY config/webserver_config.py ${AIRFLOW_USER_HOME}/webserver_config.py
 
-RUN chown -R airflow: ${AIRFLOW_USER_HOME}
+#RUN chown -R airflow: ${AIRFLOW_USER_HOME}
 RUN chmod +x /entrypoint.sh
 
 EXPOSE 8080 5555 8793
 
-USER airflow
+#USER airflow
 WORKDIR ${AIRFLOW_USER_HOME}
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["local-runner"]

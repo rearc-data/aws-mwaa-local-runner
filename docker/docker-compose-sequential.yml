@@ -1,8 +1,9 @@
 version: '3.7'
 services:
     webserver:
-        image: amazon/mwaa-local:2_4
+#        image: amazon/mwaa-local:2_4
         platform: "linux/amd64"
+        build: .
         restart: always
         environment:
             - LOAD_EX=n
