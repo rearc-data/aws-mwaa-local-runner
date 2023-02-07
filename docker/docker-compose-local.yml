@@ -17,7 +17,7 @@ services:
       - "/var/lib/postgresql/data"
 
   local-runner:
-    # image: amazon/mwaa-local:2_2
+    # image: amazon/mwaa-local:2_4
     # platform: "linux/amd64"
     # platform: "linux/arm64"
     build: .
@@ -45,10 +45,10 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/local/airflow/.cache/pip
       - /root/.cache/pip
-    user: root
     ports:
       - "8080:8080"
     command: local-runner
+    user: root
     tmpfs:
       - /tmp
     healthcheck:
