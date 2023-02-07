@@ -27,7 +27,7 @@ services:
     environment:
       LOAD_EX: n
       EXECUTOR: Local
-      DAG_ECS_TAG_PREFIX: ${TAG_PREFIX}
+      DAG__ECS__TAG_PREFIX: ${TAG_PREFIX}
       AWS_PROFILE: ${AWS_PROFILE}
       MWAA_IS_LOCAL: ${RUN_LOCAL:-1}
       REQUIREMENTS_FILE: dags/requirements.txt
