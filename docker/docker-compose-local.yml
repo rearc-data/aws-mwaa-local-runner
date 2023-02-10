@@ -32,6 +32,7 @@ services:
       MWAA_IS_LOCAL: ${RUN_LOCAL:-1}
       REQUIREMENTS_FILE: dags/requirements.txt
       AIRFLOW__SECRETS__BACKEND_KWARGS: '{"connections_prefix": "/${DEPLOYMENT:-dev}/airflow/connections", "variables_prefix": "/${DEPLOYMENT:-dev}/airflow/variables"}'
+      AIRFLOW__RDP__BLOB: "${RDP_CONFIG}"
     logging:
       options:
         max-size: 10m
