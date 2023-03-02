@@ -48,6 +48,7 @@ pip3 install $PIP_OPTION --constraint /constraints.txt --use-deprecated legacy-r
 yum install -y libcurl-devel
 # see https://stackoverflow.com/questions/49200056/pycurl-import-error-ssl-backend-mismatch
 export PYCURL_SSL_LIBRARY=openssl
+pip3 install --upgrade pip
 pip3 install $PIP_OPTION --compile pycurl
 pip3 install $PIP_OPTION celery[sqs]
 
@@ -63,7 +64,7 @@ if [ -n "${PYTHON_DEPS}" ]; then pip3 install $PIP_OPTION "${PYTHON_DEPS}"; fi
 
 MWAA_BASE_PROVIDERS_FILE=/mwaa-base-providers-requirements.txt
 echo "Installing providers supported for airflow version ${AIRFLOW_VERSION}"
-pip3 install $PIP_OPTION -r $MWAA_BASE_PROVIDERS_FILE
+pip3 install $PIP_OPTION --constraint /constraints.txt -r $MWAA_BASE_PROVIDERS_FILE
 
 # install system dependency to enable the installation of most Airflow extras
 yum install -y gcc-c++ cyrus-sasl-devel

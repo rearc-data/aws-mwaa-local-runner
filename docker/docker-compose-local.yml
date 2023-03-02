@@ -1,5 +1,11 @@
 ---
 version: '3.7'
+
+networks:
+  rearc_data_platform_nw:
+    # Use a custom name
+    name: rearc_data_platform_nw
+    external: true
 services:
   postgres:
     image: postgres:11-alpine
@@ -15,6 +21,8 @@ services:
     volumes:
       # - "${PWD}/db-data:/var/lib/postgresql/data"
       - "/var/lib/postgresql/data"
+    networks:
+      - rearc_data_platform_nw
 
   local-runner:
     # image: amazon/mwaa-local:2_4
@@ -25,13 +33,20 @@ services:
     depends_on:
       - postgres
     environment:
+      # Environment
       LOAD_EX: n
       EXECUTOR: Local
-      DAG_ECS_TAG_PREFIX: ${TAG_PREFIX}
       AWS_PROFILE: ${AWS_PROFILE}
       MWAA_IS_LOCAL: ${RUN_LOCAL:-1}
       REQUIREMENTS_FILE: dags/requirements.txt
+      # Overrides for airflow.cfg
       AIRFLOW__SECRETS__BACKEND_KWARGS: '{"connections_prefix": "/${DEPLOYMENT:-dev}/airflow/connections", "variables_prefix": "/${DEPLOYMENT:-dev}/airflow/variables"}'
+      AIRFLOW__RDP__BLOB: "${RDP_CONFIG}"
+      # Overrides for DagConfig
+      DAG__ECS__TAG_PREFIX: ${TAG_PREFIX}
+      DAG__SENTRY__ENVIRONMENT: user_local
+      DAG__SENTRY__DISABLED: "true"
+      DAG__PREFECT__API: "http://orion_server:4200/api"
     logging:
       options:
         max-size: 10m
@@ -58,3 +73,5 @@ services:
       retries: 3
     env_file:
       - ./config/.env.localrunner
+    networks:
+      - rearc_data_platform_nw
