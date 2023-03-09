@@ -5,7 +5,7 @@ networks:
   rearc_data_platform_nw:
     # Use a custom name
     name: rearc_data_platform_nw
-    external: true    
+    external: true
 services:
   postgres:
     image: postgres:11-alpine
