@@ -35,13 +35,15 @@ services:
     environment:
       LOAD_EX: n
       EXECUTOR: Local
-      DAG__ECS__TAG_PREFIX: ${TAG_PREFIX}
       AWS_PROFILE: ${AWS_PROFILE}
       MWAA_IS_LOCAL: ${RUN_LOCAL:-1}
       REQUIREMENTS_FILE: dags/requirements.txt
-      DAG__PREFECT__LOCAL_API: "http://orion_server:4200/api"
       AIRFLOW__SECRETS__BACKEND_KWARGS: '{"connections_prefix": "/${DEPLOYMENT:-dev}/airflow/connections", "variables_prefix": "/${DEPLOYMENT:-dev}/airflow/variables"}'
       AIRFLOW__RDP__BLOB: "${RDP_CONFIG}"
+      DAG__ECS__TAG_PREFIX: ${TAG_PREFIX}
+      DAG__SENTRY__ENVIRONMENT: user_local
+      DAG__SENTRY__DISABLED: "true"
+      DAG__PREFECT__LOCAL_API: "http://orion_server:4200/api"
     logging:
       options:
         max-size: 10m
