@@ -22,7 +22,7 @@ services:
       # - "${PWD}/db-data:/var/lib/postgresql/data"
       - "/var/lib/postgresql/data"
     networks:
-      - rearc_data_platform_nw  
+      - rearc_data_platform_nw
 
   local-runner:
     # image: amazon/mwaa-local:2_2
