@@ -33,13 +33,16 @@ services:
     depends_on:
       - postgres
     environment:
+      # Environment
       LOAD_EX: n
       EXECUTOR: Local
       AWS_PROFILE: ${AWS_PROFILE}
       MWAA_IS_LOCAL: ${RUN_LOCAL:-1}
       REQUIREMENTS_FILE: dags/requirements.txt
+      # Overrides for airflow.cfg
       AIRFLOW__SECRETS__BACKEND_KWARGS: '{"connections_prefix": "/${DEPLOYMENT:-dev}/airflow/connections", "variables_prefix": "/${DEPLOYMENT:-dev}/airflow/variables"}'
       AIRFLOW__RDP__BLOB: "${RDP_CONFIG}"
+      # Overrides for DagConfig
       DAG__ECS__TAG_PREFIX: ${TAG_PREFIX}
       DAG__SENTRY__ENVIRONMENT: user_local
       DAG__SENTRY__DISABLED: "true"
