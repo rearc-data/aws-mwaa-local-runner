@@ -71,4 +71,4 @@ services:
     env_file:
       - ./config/.env.localrunner
     networks:
-      - rearc_data_platform_nw  
+      - rearc_data_platform_nw
