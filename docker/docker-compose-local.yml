@@ -46,7 +46,7 @@ services:
       DAG__ECS__TAG_PREFIX: ${TAG_PREFIX}
       DAG__SENTRY__ENVIRONMENT: user_local
       DAG__SENTRY__DISABLED: "true"
-      DAG__PREFECT__API: "http://orion_server:4200/api"
+      DAG__PREFECT__LOCAL_API: "http://orion_server:4200/api"
     logging:
       options:
         max-size: 10m
