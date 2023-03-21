@@ -44,8 +44,8 @@ yum install -y java-1.8.0-openjdk
 # Installing mariadb-devel dependency for apache-airflow-providers-mysql.
 # The mariadb-devel provided by AL2 conflicts with openssl11 which is required Python 3.10
 # so a newer version of the dependency must be installed from source.
-sudo mkdir mariadb_rpm
-sudo chown airflow /mariadb_rpm
+mkdir mariadb_rpm
+chown airflow /mariadb_rpm
 
 if [[ $(uname -p) == "aarch64" ]]; then
 	wget https://dlm.mariadb.com/2592621/MariaDB/mariadb-10.8.6/yum/rhel7-aarch64/rpms/MariaDB-common-10.8.4-1.el7.centos.aarch64.rpm -P /mariadb_rpm
@@ -60,7 +60,7 @@ else
 fi
 
 # install mariadb_devel and its dependencies
-sudo rpm -ivh /mariadb_rpm/*
+rpm -ivh /mariadb_rpm/*
 
 # install minimal Airflow packages
 pip3 install $PIP_OPTION --no-use-pep517 --constraint /constraints.txt poetry
