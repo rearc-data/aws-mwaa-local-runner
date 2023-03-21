@@ -3,7 +3,7 @@
 # DESCRIPTION: Amazon MWAA Local Dev Environment
 # BUILD: docker build --rm -t amazon/mwaa-local .
 
-FROM amazonlinux
+FROM amazonlinux:2
 LABEL maintainer="amazon"
 
 # Airflow
@@ -26,7 +26,6 @@ COPY script/bootstrap.sh /bootstrap.sh
 COPY script/systemlibs.sh /systemlibs.sh
 COPY script/generate_key.sh /generate_key.sh
 COPY config/constraints.txt /constraints.txt
-#COPY config/requirements.txt /requirements.txt
 COPY config/mwaa-base-providers-requirements.txt /mwaa-base-providers-requirements.txt
 
 RUN chmod u+x /systemlibs.sh && /systemlibs.sh
