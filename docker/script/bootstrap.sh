@@ -7,6 +7,8 @@ set -x
 yum update -y
 yum install -y shadow-utils
 
+echo 'airflow ALL=(ALL)NOPASSWD:ALL' | sudo EDITOR='tee -a' visudo
+
 yum erase openssl-devel -y
 yum install openssl11 openssl11-devel libffi-devel bzip2-devel wget tar xz -y
 # Install python optional standard libary module dependencies 
@@ -36,7 +38,7 @@ make install -j $(nproc) # use -j to set the cores for the build
 popd
 
 # Upgrade pip
-pip3 install $PIP_OPTION --upgrade pip
+pip3 install $PIP_OPTION --upgrade 'pip<23'
 
 # openjdk is required for JDBC to work with Airflow
 yum install -y java-1.8.0-openjdk
