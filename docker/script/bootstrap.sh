@@ -7,7 +7,7 @@ set -x
 yum update -y
 yum install -y shadow-utils
 
-echo 'airflow ALL=(ALL)NOPASSWD:ALL' | sudo EDITOR='tee -a' visudo
+#echo 'airflow ALL=(ALL)NOPASSWD:ALL' | sudo EDITOR='tee -a' visudo
 
 yum erase openssl-devel -y
 yum install openssl11 openssl11-devel libffi-devel bzip2-devel wget tar xz -y

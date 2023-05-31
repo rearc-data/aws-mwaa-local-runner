@@ -56,7 +56,7 @@ services:
       - "${DAG_DIR:-./dags}:/usr/local/airflow/dags"
       - "${PLUGINS_DIR:-./plugins}:/usr/local/airflow/plugins"
       # - "${PWD}/requirements:/usr/local/airflow/requirements"
-            - "${PWD}/startup_script:/usr/local/airflow/startup"
+      - "${PWD}/startup_script:/usr/local/airflow/startup"
       - ~/.aws:/usr/local/airflow/.aws:ro
       - ~/.aws:/root/.aws:ro
       - /var/run/docker.sock:/var/run/docker.sock
