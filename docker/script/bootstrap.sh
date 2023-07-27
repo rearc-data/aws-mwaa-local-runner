@@ -89,7 +89,7 @@ if [ -n "${PYTHON_DEPS}" ]; then pip3 install $PIP_OPTION "${PYTHON_DEPS}"; fi
 
 MWAA_BASE_PROVIDERS_FILE=/mwaa-base-providers-requirements.txt
 echo "Installing providers supported for airflow version ${AIRFLOW_VERSION}"
-pip3 install $PIP_OPTION --constraint /constraints.txt -r $MWAA_BASE_PROVIDERS_FILE
+pip3 install --constraint /constraints.txt $PIP_OPTION --constraint /constraints.txt -r $MWAA_BASE_PROVIDERS_FILE
 
 # jq is used to parse json
 yum install -y jq
