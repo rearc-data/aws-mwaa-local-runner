@@ -33,7 +33,7 @@ COPY config/mwaa-base-providers-requirements.txt /mwaa-base-providers-requiremen
 
 RUN chmod u+x /systemlibs.sh && /systemlibs.sh
 RUN chmod u+x /bootstrap.sh && /bootstrap.sh
-RUN chmod u+x /generate_key.sh && /generate_key.sh
+RUN bash /generate_key.sh
 RUN chmod u+x /run-startup.sh
 RUN chmod u+x /shell-launch-script.sh
 RUN chmod u+x /verification.sh
