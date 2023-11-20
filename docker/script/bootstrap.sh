@@ -4,8 +4,8 @@ set -e
 set -x
 
 # install adduser and add the airflow user
-yum update -y
-yum install -y shadow-utils
+dnf update -y
+dnf install -y shadow-utils
 
 #echo 'airflow ALL=(ALL)NOPASSWD:ALL' | sudo EDITOR='tee -a' visudo
 
