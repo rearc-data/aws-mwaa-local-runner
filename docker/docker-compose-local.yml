@@ -25,7 +25,7 @@ services:
       - rearc_data_platform_nw
 
   local-runner:
-    # image: amazon/mwaa-local:2_5
+    # image: amazon/mwaa-local:2_7
     # platform: "linux/amd64"
     # platform: "linux/arm64"
     build: .
