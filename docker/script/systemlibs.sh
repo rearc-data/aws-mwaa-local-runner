@@ -4,7 +4,7 @@ set -e
 dnf update -y
 
 # install basic python environment
-dnf install -y python38 gcc gcc-g++ python3-devel
+dnf install -y python3 gcc gcc-g++ python3-devel
 
 # JDBC and PyODBC dependencies
 # openjdk is required for JDBC to work with Airflow
