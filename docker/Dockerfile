@@ -48,6 +48,11 @@ RUN chmod +x /entrypoint.sh
 
 EXPOSE 8080 5555 8793
 
+# Rearc requirements
+COPY config/rearc-constraints.txt /rearc-requirements/constraints.txt
+COPY config/rearc-requirements.txt /rearc-requirements/requirements.txt
+RUN pip3 install $PIP_OPTION -r /rearc-requirements/requirements.txt
+
 #USER airflow
 WORKDIR ${AIRFLOW_USER_HOME}
 ENTRYPOINT ["/entrypoint.sh"]
